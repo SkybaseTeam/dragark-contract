@@ -1,1 +1,1 @@
-const GAME_HASH: felt252 = 1;
+const ADMIN_ADDRESS: felt252 = 0x7f9adf9d7fda4622f5c0598177e23685eadb4ea9dab0a4fcf026656682c9b96;

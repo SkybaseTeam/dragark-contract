@@ -1,2 +1,1 @@
-const MAX_FOOD_STAT: u16 = 2000_u16;
-const MAX_STONE_STAT: u16 = 2000_u16;
+const MAX_LEVEL: u8 = 10_u8;

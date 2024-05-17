@@ -1,17 +1,19 @@
-use dragark::models::island::Resource;
+use dragark_20::models::island::Resource;
 use starknet::ContractAddress;
 
 #[derive(Model, Copy, Drop, Serde)]
-struct DragonIslandCaptureTransport {
+struct Journey {
     #[key]
-    transport_id: felt252,
-    dragon: usize,
+    game_id: usize,
+    #[key]
+    journey_id: felt252,
     owner: ContractAddress,
-    resources: Resource,
-    resources_island: usize,
-    island_capturing: usize,
+    dragon_id: usize,
+    carrying_resources: Resource,
+    island_from_id: usize,
+    island_to_id: usize,
     start_time: u64,
-    end_time: u64,
+    finish_time: u64,
     attack_type: AttackType,
     attack_result: AttackResult,
     status: bool
@@ -19,6 +21,8 @@ struct DragonIslandCaptureTransport {
 
 #[derive(Copy, Drop, Serde, Introspect, PartialEq)]
 enum AttackType {
+    Unknown,
+    None,
     DerelictIslandAttack,
     UserIslandAttack
 }
@@ -26,6 +30,7 @@ enum AttackType {
 #[derive(Copy, Drop, Serde, Introspect, PartialEq)]
 enum AttackResult {
     Unknown,
+    None,
     Win,
     Lose
 }

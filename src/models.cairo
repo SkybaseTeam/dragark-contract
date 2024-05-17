@@ -1,11 +1,10 @@
 mod dragon;
-mod game;
+mod game_info;
+mod game_island_info;
 mod island;
-mod island_dragon_defending;
 mod position;
 mod user;
 mod user_dragon_owned;
 mod user_island_owned;
-mod dragon_island_transport;
-mod dragon_scout_transport;
-mod dragon_island_capture_transport;
+mod scout_info;
+mod journey;
