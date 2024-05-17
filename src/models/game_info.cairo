@@ -1,11 +1,12 @@
-use dragark_20::models::position::{Position, PositionTrait};
+use dragark_3::models::position::{Position, PositionTrait};
 
 // Model GameInfo
 // All sizes are in sub-sub-block
 
-// block = 3 x 3 sub-blocks = 9 x 9 sub-sub-blocks
-// sub-block = 3 x 3 sub-sub blocks
+// 1 block = 3 x 3 sub-blocks = 9 x 9 sub-sub-blocks
+// 1 sub-block = 3 x 3 sub-sub blocks
 // sub-sub block = 1 x 1
+// Initial map sizes = 3 x 3 blocks = 9 x 9 sub-blocks = 27 x 27 sub-sub-blocks
 
 #[derive(Model, Drop, Serde)]
 struct GameInfo {

@@ -1,9 +1,9 @@
 use core::Zeroable;
 use starknet::ContractAddress;
 use starknet::get_block_timestamp;
-use dragark_20::constants::island::MAX_LEVEL;
-use dragark_20::models::position::{Position, PositionTrait};
-use dragark_20::messages::error::Messages;
+use dragark_3::constants::island::MAX_LEVEL;
+use dragark_3::models::position::{Position, PositionTrait};
+use dragark_3::messages::error::Messages;
 
 #[derive(Model, Copy, Drop, Serde)]
 struct Island {
@@ -12,7 +12,7 @@ struct Island {
     #[key]
     island_id: usize, // Island's ID
     owner: ContractAddress, // Island's owner address
-    position: Position, // Island's position (x: [0, 998], y: [0, 998])
+    position: Position, // Island's position
     element: IslandElement,
     title: IslandTitle,
     island_type: IslandType, // Island's type
@@ -72,11 +72,11 @@ impl IslandImpl of IslandTrait {
         island_type: IslandType
     ) -> Island {
         // Randomize position in block
-        let position_in_sub_block = PositionTrait::init_position(island_id, 3);
+        let position_in_sub_block = PositionTrait::init_position(island_id, 2);
 
         // Calculate x & y coordinates of the island in the map
-        let mut x: u32 = block_coordinates.x + position_in_sub_block.x;
-        let mut y: u32 = block_coordinates.y + position_in_sub_block.y;
+        let mut x: u32 = block_coordinates.x + 1 + position_in_sub_block.x;
+        let mut y: u32 = block_coordinates.y + 1 + position_in_sub_block.y;
         if (sub_block_pos_id == 1) {
             x += 3;
             y += 3;

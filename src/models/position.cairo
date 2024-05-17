@@ -124,6 +124,7 @@ impl PositionImpl of PositionTrait {
             i = i + 1;
         };
 
-        array![id_1, id_2, id_3, id_4, id_5, id_6, id_7, id_8, id_9]
+        // array![id_1, id_2, id_3, id_4, id_5, id_6, id_7, id_8, id_9]
+        array![1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
 }

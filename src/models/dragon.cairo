@@ -1,6 +1,6 @@
 use starknet::ContractAddress;
 use starknet::get_block_timestamp;
-use dragark_20::models::island::Resource;
+use dragark_3::models::island::Resource;
 
 #[derive(Model, Copy, Drop, Serde)]
 struct Dragon {

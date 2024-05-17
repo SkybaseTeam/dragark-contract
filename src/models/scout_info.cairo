@@ -1,4 +1,4 @@
-use dragark_20::models::position::Position;
+use dragark_3::models::position::Position;
 use starknet::ContractAddress;
 
 #[derive(Model, Copy, Drop, Serde)]

@@ -1,5 +1,5 @@
-use dragark_20::models::position::Position;
-use dragark_20::models::island::Resource;
+use dragark_3::models::position::Position;
+use dragark_3::models::island::Resource;
 
 #[dojo::interface]
 trait IActions {
@@ -80,23 +80,23 @@ mod actions {
     use core::integer::u32_sqrt;
     use core::integer::BoundedU32;
     use core::Zeroable;
-    use dragark_20::constants::dragon::DRAGON_BONUS;
-    use dragark_20::constants::game::ADMIN_ADDRESS;
-    use dragark_20::messages::error::Messages;
-    use dragark_20::models::user::{User};
-    use dragark_20::models::game_info::{GameInfo};
-    use dragark_20::models::game_island_info::GameIslandInfo;
-    use dragark_20::models::dragon::{
+    use dragark_3::constants::dragon::DRAGON_BONUS;
+    use dragark_3::constants::game::ADMIN_ADDRESS;
+    use dragark_3::messages::error::Messages;
+    use dragark_3::models::user::{User};
+    use dragark_3::models::game_info::{GameInfo};
+    use dragark_3::models::game_island_info::GameIslandInfo;
+    use dragark_3::models::dragon::{
         Dragon, DragonModelId, DragonRarity, DragonElement, DragonTitle, DragonState, DragonTrait
     };
-    use dragark_20::models::island::{
+    use dragark_3::models::island::{
         Island, IslandElement, IslandTitle, IslandType, Resource, IslandTrait
     };
-    use dragark_20::models::user_island_owned::UserIslandOwned;
-    use dragark_20::models::user_dragon_owned::UserDragonOwned;
-    use dragark_20::models::position::{SubBlockPos, NextBlockDirection, Position, PositionTrait};
-    use dragark_20::models::scout_info::ScoutInfo;
-    use dragark_20::models::journey::{Journey, AttackType, AttackResult};
+    use dragark_3::models::user_island_owned::UserIslandOwned;
+    use dragark_3::models::user_dragon_owned::UserDragonOwned;
+    use dragark_3::models::position::{SubBlockPos, NextBlockDirection, Position, PositionTrait};
+    use dragark_3::models::scout_info::ScoutInfo;
+    use dragark_3::models::journey::{Journey, AttackType, AttackResult};
     use super::IActions;
     use starknet::ContractAddress;
     use starknet::{get_caller_address, get_block_timestamp};
@@ -380,9 +380,9 @@ mod actions {
                     // Init next block direction
                     right_1 = 0;
                     down_2 = 1 + (game.cur_map_expanding_num.into() * 2);
-                    left_3 = (game.cur_map_expanding_num.into() * 2) + 1;
-                    up_4 = (game.cur_map_expanding_num.into() * 2) + 1;
-                    right_5 = (game.cur_map_expanding_num.into() * 2) + 1;
+                    left_3 = 1 + (game.cur_map_expanding_num.into() * 2) + 1;
+                    up_4 = 1 + (game.cur_map_expanding_num.into() * 2) + 1;
+                    right_5 = 1 + (game.cur_map_expanding_num.into() * 2) + 1;
                 } else {
                     panic_with_felt252(Messages::INVALID_CASE);
                 }
@@ -1193,8 +1193,10 @@ mod actions {
             );
 
             // Init initial map size & coordinates
-            let cur_map_sizes = 3 * 3 * 3; // 27 x 27 sub-sub-blocks
-            let cur_block_coordinates = Position { x: (u32_max / 2) - 3, y: (u32_max / 2) - 3 };
+            let cur_map_sizes = 3
+                * 3
+                * 3; // 3 blocks * 3 sub-blocks * 3 sub-sub-blocks ~ 27 x 27 sub-sub-blocks
+            let cur_block_coordinates = Position { x: 1500 - 3, y: 1500 - 3 };
             let cur_map_coordinates = Position {
                 x: cur_block_coordinates.x - 3 * 3, y: cur_block_coordinates.y - 3 * 3
             };
@@ -1393,9 +1395,9 @@ mod actions {
                         // Init next block direction
                         right_1 = 0;
                         down_2 = 1 + (game.cur_map_expanding_num.into() * 2);
-                        left_3 = (game.cur_map_expanding_num.into() * 2) + 1;
-                        up_4 = (game.cur_map_expanding_num.into() * 2) + 1;
-                        right_5 = (game.cur_map_expanding_num.into() * 2) + 1;
+                        left_3 = 1 + (game.cur_map_expanding_num.into() * 2) + 1;
+                        up_4 = 1 + (game.cur_map_expanding_num.into() * 2) + 1;
+                        right_5 = 1 + (game.cur_map_expanding_num.into() * 2) + 1;
                     } else {
                         panic_with_felt252(Messages::INVALID_CASE);
                     }

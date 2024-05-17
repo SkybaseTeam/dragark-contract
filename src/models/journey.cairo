@@ -1,4 +1,4 @@
-use dragark_20::models::island::Resource;
+use dragark_3::models::island::Resource;
 use starknet::ContractAddress;
 
 #[derive(Model, Copy, Drop, Serde)]
